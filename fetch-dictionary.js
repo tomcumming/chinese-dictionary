@@ -1,7 +1,12 @@
-/** Stream \r\n seperated lines */
+/**
+ * Stream \r\n seperated lines
+ * @param {ReadableStream<string>} stream
+ */
 async function* streamLines(stream) {
   let buffer = "";
-  for await (const chunk of stream) {
+  /** @type {any} */
+  const iterableStrings = stream; // Why?
+  for await (const chunk of /** @type {any} */ iterableStrings) {
     buffer += chunk;
 
     while (true) {
@@ -20,6 +25,10 @@ async function* streamLines(stream) {
 
 const pattern = /^(\S+)\s(\S+)\s\[([^\]]+)\]\s\/(.+)\/$/;
 
+/**
+ * @param {string} line
+ * @returns {[string, string, string, string[]]}
+ */
 function parseEntry(line) {
   const match = pattern.exec(line);
   if (match === null) {
@@ -29,6 +38,9 @@ function parseEntry(line) {
   }
 }
 
+/**
+ * @param {URL} url
+ */
 export async function* fetchDictionaryEntries(url) {
   const response = await fetch(url);
   // Do i need to blobify this?

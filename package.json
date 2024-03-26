@@ -1,7 +1,8 @@
 {
   "scripts": {
     "format": "prettier --write *.html *.js package.json",
-    "serve": "esbuild --servedir=."
+    "serve": "esbuild --servedir=.",
+    "check": "tsc -p tsconfig.json"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
