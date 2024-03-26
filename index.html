@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head> </head>
+  <body>
+    <script type="module">
+      import { fetchDictionaryEntries } from "./fetch-dictionary.js";
+
+      async function foo() {
+        let entries = [];
+        for await (const entry of fetchDictionaryEntries(
+          "./cedict_1_0_ts_utf-8_mdbg.txt.gz",
+        )) {
+          entries.push(entry);
+        }
+        console.log(entries);
+      }
+
+      foo();
+    </script>
+  </body>
+</html>

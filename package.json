@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "format": "prettier --write *.html *.js package.json",
+    "serve": "esbuild --servedir=."
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3",
+    "typescript-language-server": "^4.3.3"
+  }
+}
