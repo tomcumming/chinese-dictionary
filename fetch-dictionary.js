@@ -39,7 +39,7 @@ function parseEntry(line) {
 }
 
 /**
- * @param {URL} url
+ * @param {string} url
  */
 export async function* fetchDictionaryEntries(url) {
   const response = await fetch(url);

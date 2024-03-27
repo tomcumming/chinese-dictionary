@@ -2,18 +2,6 @@
 <html>
   <head> </head>
   <body>
-    <script type="module">
-      import { fetchDictionaryEntries } from "./fetch-dictionary.js";
-      import { indexEntries } from "./database.js";
-
-      async function foo() {
-        const entries = fetchDictionaryEntries(
-          "./cedict_1_0_ts_utf-8_mdbg.txt.gz",
-        );
-        console.log(await indexEntries(entries));
-      }
-
-      foo();
-    </script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
