@@ -1,7 +1,50 @@
 <!doctype html>
 <html>
-  <head> </head>
+  <head>
+    <title>Chinese Dictionary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+
+        font-family: system-ui;
+      }
+
+      form {
+        display: grid;
+        padding: 0.5em;
+      }
+
+      form > input {
+        height: 2em;
+      }
+
+      #definitions {
+        display: grid;
+        padding: 0.5em;
+        gap: 1em;
+      }
+
+      .entry {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+      }
+
+      .children {
+        margin-left: 2em;
+        color: #888;
+      }
+    </style>
+  </head>
   <body>
+    <form>
+      <input type="text" autofocus />
+    </form>
+    <div id="definitions"></div>
+
     <script type="module" src="./main.js"></script>
   </body>
 </html>

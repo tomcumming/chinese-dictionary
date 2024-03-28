@@ -15,10 +15,10 @@ export async function indexEntries(entries) {
       defs.set(word, def);
     };
 
-    const [simp, trad] = entry;
+    const [trad, simp] = entry;
 
-    go(simp);
-    if (simp != trad) go(trad);
+    go(trad);
+    if (simp != trad) go(simp);
   }
 
   return defs;
@@ -96,7 +96,7 @@ export async function writeEntries(db, entries) {
 /**
  * @param {IDBDatabase} db
  * @param {string} suffix
- * @returns {Promise<undefined | [string, Entry]>}
+ * @returns {Promise<undefined | [string, Entry[]]>}
  */
 async function lookupSuffix(db, suffix) {
   let result;
@@ -109,7 +109,7 @@ async function lookupSuffix(db, suffix) {
       if (req.result === null) {
         // Done
       } else {
-        /** @type {Entry} */
+        /** @type {Entry[]} */
         const entry = req.result.value;
         const key = String(req.result.key);
         if (key.startsWith(suffix)) result = [key, entry];
@@ -135,10 +135,10 @@ export async function lookupEntries(db, search) {
     if (res === undefined) {
       break;
     } else {
-      const [word, entry] = res;
+      const [word, es] = res;
 
       if (search.startsWith(word)) {
-        entries.push(entry);
+        entries.push(...es);
         matched = word.length;
       } else {
         let suffixLength = 0;
